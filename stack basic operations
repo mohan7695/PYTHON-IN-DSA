@@ -1,0 +1,16 @@
+n = int(input())
+stack = []
+
+for _ in range(n):
+    command = input().split()
+    action = command[0]
+    
+    if action == "PUSH":
+        value = int(command[1])
+        stack.append(value)
+    elif action == "POP":
+        if stack:
+            print(stack.pop())
+    elif action == "PEEK":
+        if stack:
+            print(stack[-1])
