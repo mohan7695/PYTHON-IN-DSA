@@ -1,0 +1,19 @@
+def max_product(prices,left,right):
+    if left>=right:
+        return 0;
+
+    mid = (left+right)//2
+
+    left_profit = max_product(prices,left,mid)
+
+    right_profit = max_product(prices,mid+1,right)    
+
+    min_left = min(prices[left : mid+1])
+    max_right = max(prices[mid+1 : right+1]) 
+
+    cross_product = max_right - min_left
+    return max(0,left_profit,right_profit,cross_product)
+n =int(input().strip())
+prices = list(map(int,input().strip().split()))
+
+print(max_product(prices,0,n-1))
